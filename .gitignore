@@ -1,0 +1,10 @@
+# 원본 백업/레퍼런스 폴더 제외 (시안에서 직접 참조하지 않는 110MB+ 원본 보관용)
+assets/reference/
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.log

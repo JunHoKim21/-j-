@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>강남J비뇨기과 반응형 디자인 시안 비교 (A / B)</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Pretendard', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #F4F7FA;
+      color: #111827;
+      line-height: 1.65;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    .wrap {
+      max-width: 1040px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .head {
+      text-align: center;
+      margin-bottom: 44px;
+    }
+    .eyebrow {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #1D5B9B;
+      margin-bottom: 10px;
+    }
+    h1 {
+      font-size: clamp(24px, 3.2vw, 36px);
+      font-weight: 800;
+      color: #0F2744;
+      letter-spacing: -0.025em;
+      margin-bottom: 10px;
+    }
+    .head p {
+      font-size: 15.5px;
+      color: #4B5563;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: #FFFFFF;
+      border-radius: 16px;
+      padding: 34px 30px;
+      border: 1px solid #DDE5EF;
+      box-shadow: 0 10px 28px rgba(15, 39, 68, 0.06);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .card.card-b {
+      background: #1C2026;
+      color: #FFFFFF;
+      border-color: rgba(176, 145, 105, 0.35);
+    }
+    .badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+    .card-a .badge {
+      background: #EBF3FB;
+      color: #1D5B9B;
+    }
+    .card-b .badge {
+      background: rgba(140, 107, 67, 0.22);
+      color: #D6B992;
+      border: 1px solid rgba(176, 145, 105, 0.38);
+    }
+    .card h2 {
+      font-size: 23px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .card-a h2 { color: #0F2744; }
+    .card p {
+      font-size: 14.5px;
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+    .card-a p { color: #4B5563; }
+    .card-b p { color: rgba(255, 255, 255, 0.78); }
+    .sub-links {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .sub-links a {
+      font-size: 13px;
+      font-weight: 600;
+      padding: 9px 12px;
+      border-radius: 6px;
+      text-align: center;
+      text-decoration: none;
+      transition: opacity 0.18s;
+    }
+    .card-a .sub-links a {
+      background: #F4F7FA;
+      color: #0F2744;
+    }
+    .card-b .sub-links a {
+      background: rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.88);
+    }
+    .sub-links a:hover { opacity: 0.82; }
+    .main-btn {
+      display: block;
+      width: 100%;
+      padding: 14px 20px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 15.5px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.18s;
+    }
+    .main-btn:hover { transform: translateY(-1px); }
+    .card-a .main-btn {
+      background: #1D5B9B;
+      color: #FFFFFF;
+    }
+    .card-b .main-btn {
+      background: #8C6B43;
+      color: #FFFFFF;
+    }
+    .foot {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 13px;
+      color: #6B7280;
+    }
+    @media (max-width: 767px) {
+      .grid { grid-template-columns: 1fr; }
+      .card { padding: 26px 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="head">
+      <span class="eyebrow">GANGNAM J UROLOGY CLINIC · DESIGN PROTOTYPES</span>
+      <h1>강남J비뇨기과 반응형 HTML 디자인 시안</h1>
+      <p>아래 2가지 디자인 방향(PC · 모바일 반응형)을 선택하여 바로 확인하실 수 있습니다.</p>
+    </header>
+
+    <main class="grid">
+      <section class="card card-a">
+        <div>
+          <span class="badge">방향 A · 추천안</span>
+          <h2>전문·신뢰 중심 (Clinical Authority)</h2>
+          <p>Deep Navy &amp; Trust Blue 기반의 대학병원급 정통 비뇨의학 톤. 풀스크린 3슬라이드 히어로, 초대형 2026 연혁, 비대칭 Bento 지표 및 미디어룸을 제공합니다.</p>
+          <div class="sub-links">
+            <a href="./site_a/hp_01.html">의료진 소개</a>
+            <a href="./site_a/clinic_02.html">전립선 센터</a>
+            <a href="./site_a/qna_01.html#consultation">수술상담</a>
+            <a href="./site_a/qna_01.html#reservation">온라인예약</a>
+          </div>
+        </div>
+        <a href="./site_a/index.html" class="main-btn">시안 A 메인 열기 &rarr;</a>
+      </section>
+
+      <section class="card card-b">
+        <div>
+          <span class="badge">방향 B · 프라이빗 에디토리얼</span>
+          <h2>모던·프리미엄 중심 (Modern Private Clinic)</h2>
+          <p>Deep Charcoal &amp; Warm Bronze 기반의 강남권 프라이빗 클리닉 톤. 3S 원칙 워터마크 밴드, 공간 에디토리얼 갤러리 및 흰색 카드형 의학 도식을 제공합니다.</p>
+          <div class="sub-links">
+            <a href="./site_b/hp_01.html">의료진 소개</a>
+            <a href="./site_b/clinic_02.html">전립선 센터</a>
+            <a href="./site_b/qna_01.html#consultation">수술상담</a>
+            <a href="./site_b/qna_01.html#reservation">온라인예약</a>
+          </div>
+        </div>
+        <a href="./site_b/index.html" class="main-btn">시안 B 메인 열기 &rarr;</a>
+      </section>
+    </main>
+
+    <footer class="foot">
+      HTML / CSS / Vanilla JS 정적 디자인 시안 · PC(1920/1440/1280px) &amp; 모바일(390/375px) 대응
+    </footer>
+  </div>
+</body>
+</html>

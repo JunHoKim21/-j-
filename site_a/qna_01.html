@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>온라인 상담 및 진료예약 | 강남J비뇨기과</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <!-- 상단 유틸리티 바 (PC) -->
+  <div class="top-util-bar">
+    <div class="container top-util-inner">
+      <div class="top-util-info">
+        <span>상담시간 평일 09:00 ~ 18:00 · 토 09:00 ~ 13:00</span>
+        <span>서울시 강남구 학동로 203 4F (학동역 8·9번 출구)</span>
+      </div>
+      <div class="top-util-links">
+        <button type="button" data-kakao-modal>카카오톡 상담 (gnjurology)</button>
+        <a href="./index.html#location">오시는 길</a>
+        <a href="./qna_01.html#consultation">수술상담</a>
+        <a href="./qna_01.html#reservation">온라인예약</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. 공통 스티키 헤더 & 2. 9개 대메뉴 PC GNB -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="./index.html" class="header-logo" aria-label="강남J비뇨기과 홈">
+        <img src="../assets/brand-visual/pc_common_logo.png" alt="강남J비뇨기과 로고">
+      </a>
+
+      <nav class="gnb" aria-label="주요 메뉴">
+        <ul class="gnb-list">
+          <li class="gnb-item">
+            <a href="./hp_01.html" class="gnb-link">병원소개</a>
+            <div class="gnb-dropdown">
+              <a href="./hp_01.html">의료진 소개 (2인 체제)</a>
+              <a href="./index.html#location">진료안내 · 2인 시간표</a>
+              <a href="./index.html#location">오시는 길</a>
+              <a href="./index.html#media">언론보도 · VIDEO GALLERY</a>
+            </div>
+          </li>
+          <li class="gnb-item">
+            <a href="./index.html#specialties" class="gnb-link">요로결석</a>
+            <div class="gnb-dropdown">
+              <a href="./index.html#specialties">요로결석 원인·증상</a>
+              <a href="./index.html#specialties">요로결석 진단</a>
+              <a href="./index.html#specialties">요로결석 치료</a>
+            </div>
+          </li>
+          <li class="gnb-item">
+            <a href="./index.html#specialties" class="gnb-link">음경임플란트</a>
+            <div class="gnb-dropdown">
+              <a href="./index.html#specialties">음경임플란트 (3S-DTC)</a>
+              <a href="./clinic_02.html#holep">전립선 동시수술 (H-combi)</a>
+            </div>
+          </li>
+          <li class="gnb-item">
+            <a href="./clinic_02.html" class="gnb-link">전립선</a>
+            <div class="gnb-dropdown">
+              <a href="./clinic_02.html#overview">전립선 개요</a>
+              <a href="./clinic_02.html#bph">전립선비대증</a>
+              <a href="./clinic_02.html#holep">HoLEP 시술</a>
+              <a href="./clinic_02.html#urolift">유로리프트</a>
+              <a href="./clinic_02.html#prostatitis">전립선염</a>
+              <a href="./clinic_02.html#cancer">전립선암</a>
+              <a href="./clinic_02.html#prostatodynia">전립선통</a>
+            </div>
+          </li>
+          <li class="gnb-item">
+            <a href="./index.html#specialties" class="gnb-link">남성성형</a>
+            <div class="gnb-dropdown">
+              <a href="./index.html#specialties">귀두확대술</a>
+              <a href="./index.html#specialties">음경굵기확대술</a>
+              <a href="./index.html#specialties">음경길이연장술</a>
+              <a href="./index.html#specialties">음경이물질제거</a>
+              <a href="./index.html#specialties">음경만곡증</a>
+              <a href="./index.html#specialties">함몰음경</a>
+            </div>
+          </li>
+          <li class="gnb-item">
+            <a href="./index.html#specialties" class="gnb-link">성기능장애</a>
+            <div class="gnb-dropdown">
+              <a href="./index.html#specialties">조루증이란</a>
+              <a href="./index.html#specialties">조루증 원인·진단</a>
+              <a href="./index.html#specialties">조루증의 치료</a>
+              <a href="./index.html#specialties">발기부전</a>
+              <a href="./index.html#specialties">성기능검사</a>
+              <a href="./index.html#specialties">발기부전치료</a>
+            </div>
+          </li>
+          <li class="gnb-item">
+            <a href="./index.html#specialties" class="gnb-link">정관수술</a>
+            <div class="gnb-dropdown">
+              <a href="./index.html#specialties">정관수술 개요</a>
+              <a href="./index.html#specialties">무도정관수술</a>
+              <a href="./index.html#specialties">미세정관복원수술</a>
+            </div>
+          </li>
+          <li class="gnb-item">
+            <a href="./index.html#specialties" class="gnb-link">포경수술</a>
+            <div class="gnb-dropdown">
+              <a href="./index.html#specialties">레이저포경수술</a>
+            </div>
+          </li>
+          <li class="gnb-item">
+            <a href="./qna_01.html" class="gnb-link is-active">상담/예약</a>
+            <div class="gnb-dropdown">
+              <a href="./qna_01.html#consultation">Meet the expert (수술상담)</a>
+              <a href="./qna_01.html#reservation">온라인예약</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="tel:0230187575" class="header-tel tabular-nums">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          02-3018-7575
+        </a>
+        <a href="./qna_01.html#reservation" class="btn btn-primary header-cta">온라인 예약</a>
+      </div>
+
+      <div class="mobile-header-controls">
+        <a href="tel:0230187575" class="icon-btn" aria-label="전화상담 02-3018-7575">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </a>
+        <button type="button" class="icon-btn" data-drawer-open aria-label="전체 메뉴 열기" aria-expanded="false" aria-controls="mobileDrawer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3. 공통 서브 히어로 -->
+  <section class="sub-hero">
+    <div class="container sub-hero-inner">
+      <nav class="breadcrumb" aria-label="현재 위치">
+        <a href="./index.html">홈</a>
+        <span class="sep" aria-hidden="true">/</span>
+        <span>상담/예약</span>
+        <span class="sep" aria-hidden="true">/</span>
+        <strong aria-current="page">온라인 상담 및 진료예약</strong>
+      </nav>
+      <span class="sub-hero-eyebrow">PRIVATE CONSULTATION &amp; RESERVATION</span>
+      <h1>온라인 상담 및 진료예약</h1>
+      <p>환자분의 프라이버시를 최우선으로 보호합니다. 작성하신 내용은 비공개로 관리되며, 예약 및 수술 상담 확인 후 신속히 안내해 드립니다.</p>
+    </div>
+  </section>
+
+  <!-- 4. 공통 서브 카테고리 탭 -->
+  <div class="sub-tabs-wrap">
+    <div class="container">
+      <nav class="sub-tabs" aria-label="상담 및 예약 메뉴">
+        <a href="#reservation" class="sub-tab-btn is-active" data-form-mode="reservation">온라인 진료예약</a>
+        <a href="#consultation" class="sub-tab-btn" data-form-mode="consultation">Meet the expert (수술상담)</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="container form-layout">
+    <!-- 좌측 상담·예약 폼 카드 -->
+    <section class="form-card" aria-labelledby="formHeading">
+      <h2 id="formHeading" class="sr-only">상담 및 예약 신청서</h2>
+
+      <div class="form-mode-tabs" role="tablist" aria-label="접수 유형 선택">
+        <button type="button" class="form-mode-btn is-active" role="tab" aria-selected="true" data-form-mode="reservation">온라인 진료예약</button>
+        <button type="button" class="form-mode-btn" role="tab" aria-selected="false" data-form-mode="consultation">Meet the expert (수술상담)</button>
+      </div>
+
+      <form id="clinicInquiryForm" novalidate>
+        <input type="hidden" id="inquiryMode" name="inquiryMode" value="reservation">
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="userName" class="form-label">성함 <span class="req">*</span></label>
+            <input type="text" id="userName" name="userName" class="form-control" placeholder="예: 홍길동" autocomplete="name" required>
+            <span class="form-error-msg">성함을 입력해 주세요.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="userPhone" class="form-label">휴대폰 번호 <span class="req">*</span></label>
+            <input type="tel" id="userPhone" name="userPhone" class="form-control tabular-nums" placeholder="예: 010-1234-5678" autocomplete="tel" required>
+            <span class="form-error-msg">올바른 연락처를 입력해 주세요.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="clinicCategory" class="form-label">희망 진료 분야 <span class="req">*</span></label>
+            <select id="clinicCategory" name="clinicCategory" class="form-control" required>
+              <option value="">진료 분야를 선택해 주세요</option>
+              <option value="prostate">전립선 (비대증 · HoLEP · 유로리프트 · 전립선염)</option>
+              <option value="stone">요로결석</option>
+              <option value="implant">음경임플란트 (팽창형 보형물 · 동시수술)</option>
+              <option value="andrology">남성성형 (확대 · 만곡증 · 이물질제거)</option>
+              <option value="sexual">성기능장애 (발기부전 · 조루증)</option>
+              <option value="vasectomy">정관수술 · 미세정관복원수술</option>
+              <option value="circumcision">레이저 포경수술</option>
+              <option value="etc">기타 비뇨의학과 일반 진료</option>
+            </select>
+            <span class="form-error-msg">희망 진료 분야를 선택해 주세요.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="doctorPref" class="form-label">희망 의료진 (선택)</label>
+            <select id="doctorPref" name="doctorPref" class="form-control">
+              <option value="any">상관없음 (빠른 일정 우선)</option>
+              <option value="park">박천진 대표원장 (평일 오전 수술/진료, 화·수·금 오후)</option>
+              <option value="lee">이웅희 원장 (월·화·수·금·토 오전, 목 휴진)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 온라인 예약 전용 희망 일시 -->
+        <div id="reservationOnlyFields" class="form-grid">
+          <div class="form-group">
+            <label for="reserveDate" class="form-label">희망 예약일자 <span class="req">*</span></label>
+            <input type="date" id="reserveDate" name="reserveDate" class="form-control">
+            <span class="form-error-msg">희망 예약일자를 선택해 주세요.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="reserveTime" class="form-label">희망 시간대</label>
+            <select id="reserveTime" name="reserveTime" class="form-control">
+              <option value="오전 09:00 ~ 10:00">오전 09:00 ~ 10:00</option>
+              <option value="오전 10:00 ~ 11:00">오전 10:00 ~ 11:00</option>
+              <option value="오전 11:00 ~ 12:00">오전 11:00 ~ 12:00</option>
+              <option value="오후 14:00 ~ 15:00">오후 14:00 ~ 15:00</option>
+              <option value="오후 15:00 ~ 16:00">오후 15:00 ~ 16:00</option>
+              <option value="오후 16:00 ~ 17:00">오후 16:00 ~ 17:00</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inquiryTitle" class="form-label">제목 <span class="req">*</span></label>
+          <input type="text" id="inquiryTitle" name="inquiryTitle" class="form-control" placeholder="문의 또는 예약 요약을 입력해 주세요" required>
+          <span class="form-error-msg">제목을 입력해 주세요.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="inquiryContent" class="form-label">증상 및 상담 내용 <span class="req">*</span></label>
+          <textarea id="inquiryContent" name="inquiryContent" class="form-control" placeholder="현재 증상, 궁금하신 수술·검사 내용, 연락 가능한 시간대 등을 편하게 작성해 주세요. 모든 내용은 비공개로 보호됩니다." required></textarea>
+          <span class="form-error-msg">상담 또는 예약 내용을 입력해 주세요.</span>
+        </div>
+
+        <!-- ==============================================================
+             개인정보 수집 동의 & 민감정보(건강정보) 별도 동의 분리 배치
+             ============================================================== -->
+        <!-- [법무 검토 후 최종 확정] 일반 개인정보 수집·이용 동의 및 민감정보(건강정보) 별도 동의 항목 -->
+        <div class="consent-stack" id="privacy">
+          <!-- 1) 일반 개인정보 수집·이용 동의 -->
+          <div class="consent-box">
+            <div class="consent-head">
+              <label class="consent-check-label" for="agreeGeneral">
+                <input type="checkbox" id="agreeGeneral" name="agreeGeneral" required>
+                <span>일반 개인정보 수집 및 이용 동의</span>
+              </label>
+              <span class="consent-tag">필수</span>
+            </div>
+            <div class="consent-body">
+              <strong>1. 수집 항목:</strong> 성함, 휴대폰 번호, 희망 진료 분야, 희망 예약 일시, 문의 제목<br>
+              <strong>2. 수집 및 이용 목적:</strong> 온라인 진료예약 확인, 비공개 수술·진료 상담 회신 및 내원 안내<br>
+              <strong>3. 보유 및 이용 기간:</strong> 상담 및 예약 처리 목적 달성 후 지체 없이 파기 (단, 관계 법령에 따라 보존이 필요한 경우 해당 기간 동안 보관)<br>
+              <strong>4. 동의 거부 권리:</strong> 귀하는 개인정보 수집·이용에 동의하지 않을 권리가 있으나, 동의 거부 시 온라인 예약 및 상담 접수가 제한될 수 있습니다.
+              <p class="consent-legal-note">* 본 동의서 문안은 시안용 초안이며 [법무 검토 후 최종 확정]됩니다.</p>
+            </div>
+          </div>
+
+          <!-- 2) 민감정보(건강정보) 수집·이용 별도 동의 -->
+          <!-- [법무 검토 후 최종 확정] 비뇨기과 특성상 증상·질환·수술 이력 등 건강에 관한 민감정보는 일반 개인정보와 반드시 분리 동의 처리 -->
+          <div class="consent-box consent-box-sensitive">
+            <div class="consent-head">
+              <label class="consent-check-label" for="agreeSensitive">
+                <input type="checkbox" id="agreeSensitive" name="agreeSensitive" required>
+                <span>민감정보(건강정보) 수집 및 이용 별도 동의</span>
+              </label>
+              <span class="consent-tag">필수 · 별도동의</span>
+            </div>
+            <div class="consent-body">
+              <strong>1. 수집하는 민감정보 항목:</strong> 상담 내용에 기재하신 비뇨기과적 증상, 질환 이력, 복용 약물, 희망 시술·수술 관련 건강정보<br>
+              <strong>2. 수집 및 이용 목적:</strong> 비뇨의학과 전문의 및 전담 남자 상담팀의 정확한 사전 상담 답변, 진료 예약 배정 및 내원 시 맞춤 진료 연계<br>
+              <strong>3. 보유 및 이용 기간:</strong> 상담 및 예약 안내 완료 후 목적 달성 시 지체 없이 파기 (의료법 등 관계 법령상 보존 의무가 있는 경우 해당 기간 준수)<br>
+              <strong>4. 동의 거부 권리:</strong> 귀하는 민감정보(건강정보) 수집·이용에 대한 별도 동의를 거부할 수 있으며, 거부 시 증상 기반 온라인 상담이 제한될 수 있습니다.
+              <p class="consent-legal-note">* 개인정보 보호법 제23조에 따른 민감정보 별도 동의 UI이며 [법무 검토 후 최종 확정]됩니다.</p>
+            </div>
+          </div>
+
+          <p id="consentErrorMsg" class="form-error-msg" style="margin-top:-6px;">
+            일반 개인정보 수집 동의와 민감정보(건강정보) 별도 동의에 모두 체크해 주세요.
+          </p>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:12px; flex-wrap:wrap;">
+          <button type="reset" class="btn btn-outline">다시 작성</button>
+          <button type="submit" class="btn btn-primary">
+            <span id="submitBtnText">온라인 진료예약 접수 (시안 목업)</span>
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- 우측 프라이버시 및 진료 안내 사이드바 -->
+    <aside class="clinic-sidebar" aria-label="상담 안내 및 연락처">
+      <div class="sidebar-cta-card">
+        <span class="eyebrow">PRIVACY FIRST</span>
+        <h3>철저한 프라이버시 보호</h3>
+        <p>강남J비뇨기과는 독립된 5개 개인진료실과 전원 남자 상담·간호팀을 운영하며, 모든 상담 내용은 철저히 비공개로 보호됩니다.</p>
+        <div class="sidebar-tel-box">
+          <strong class="tabular-nums">02-3018-7575</strong>
+          <span>문자 상담: 010-9190-7575 (상담시간 외 문자 가능)</span>
+        </div>
+        <div class="sidebar-btn-stack">
+          <a href="tel:0230187575" class="btn btn-primary">대표번호 바로 전화하기</a>
+          <button type="button" class="btn btn-outline-white" data-kakao-modal>카카오톡 상담 (gnjurology)</button>
+        </div>
+      </div>
+
+      <div class="sidebar-info-card">
+        <h4>진료 및 상담 시간 안내</h4>
+        <ul class="bullet-list">
+          <li><strong>상담시간:</strong> 평일 09:00~18:00 / 토 09:00~13:00</li>
+          <li><strong>이웅희 원장:</strong> 월·화·수·금·토 오전 진료 (목 휴진)</li>
+          <li><strong>박천진 원장:</strong> 평일 오전 수술/진료, 화·수·금 오후 (월·목 오후 휴진)</li>
+          <li><strong>점심시간:</strong> 13:00 ~ 14:00 (일·공휴일 휴무)</li>
+        </ul>
+      </div>
+    </aside>
+  </main>
+
+  <!-- 5. 공통 다크 푸터 -->
+  <footer class="site-footer">
+    <div class="footer-top-bar">
+      <div class="container footer-top-links">
+        <a href="./qna_01.html#privacy"><strong>개인정보처리방침</strong></a>
+        <a href="./qna_01.html">이용약관</a>
+        <a href="./qna_01.html">비급여비용안내</a>
+        <a href="./index.html#location">오시는 길</a>
+        <a href="./hp_01.html">의료진 소개</a>
+      </div>
+    </div>
+    <div class="container footer-main">
+      <div>
+        <div class="footer-logo">
+          <img src="../assets/brand-visual/pc_common_footer_logo.png" alt="강남J비뇨기과 화이트 로고">
+        </div>
+        <div class="footer-biz-info">
+          상호명: 강남J비뇨기과의원 | 대표원장: 박천진<br>
+          주소: 서울시 강남구 학동로 203 4F (학동역 8번·9번 출구 사이)<br>
+          사업자등록번호: 120-90-16660 | FAX: 02-516-2030
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">진료시간 요약 (2026.08.24 기준)</div>
+        <div class="footer-hours">
+          · 이웅희 원장: 월·화·수·금·토 오전 / 목요일 휴진<br>
+          · 박천진 원장: 평일 오전 수술/진료, 화·수·금 오후 / 월·목 오후 휴진<br>
+          · 점심시간: 13:00 ~ 14:00 | 일요일·공휴일 휴무<br>
+          <span style="font-size:12px; opacity:0.7;">* 사전 예약제 운영 [병원 최종 확인 후 확정]</span>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">상담 및 예약 문의</div>
+        <a href="tel:0230187575" class="footer-tel-num tabular-nums">02-3018-7575</a>
+        <div class="footer-hours">
+          상담·문자: 010-9190-7575<br>
+          카카오톡 ID: gnjurology<br>
+          상담시간: 평일 09:00~18:00 · 토 09:00~13:00
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>COPYRIGHT &copy; GANGNAM J UROLOGY CLINIC. ALL RIGHTS RESERVED.</span>
+      <span>디자인 시안 A (Clinical Authority) — 정적 프로토타입</span>
+    </div>
+  </footer>
+
+  <!-- 6. 모바일 오프캔버스 아코디언 드로어 -->
+  <div id="drawerBackdrop" class="drawer-backdrop"></div>
+  <aside id="mobileDrawer" class="mobile-drawer" aria-hidden="true" aria-label="모바일 전체 메뉴">
+    <div class="drawer-header">
+      <img src="../assets/brand-visual/pc_common_logo.png" alt="강남J비뇨기과">
+      <button type="button" class="drawer-close" data-drawer-close aria-label="메뉴 닫기">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="drawer-quick-contact">
+      <a href="tel:0230187575">전화 02-3018-7575</a>
+      <button type="button" data-kakao-modal>카톡 gnjurology</button>
+    </div>
+    <nav class="drawer-nav">
+      <div class="drawer-acc-item">
+        <button type="button" class="drawer-acc-trigger" aria-expanded="false">병원소개 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="drawer-acc-panel">
+          <a href="./hp_01.html">의료진 소개 (2인 체제)</a>
+          <a href="./index.html#location">진료안내 · 2인 시간표</a>
+          <a href="./index.html#location">오시는 길</a>
+        </div>
+      </div>
+      <div class="drawer-acc-item">
+        <button type="button" class="drawer-acc-trigger" aria-expanded="false">요로결석 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="drawer-acc-panel"><a href="./index.html#specialties">요로결석 원인·진단·치료</a></div>
+      </div>
+      <div class="drawer-acc-item">
+        <button type="button" class="drawer-acc-trigger" aria-expanded="false">음경임플란트 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="drawer-acc-panel"><a href="./index.html#specialties">음경임플란트 (3S-DTC)</a></div>
+      </div>
+      <div class="drawer-acc-item">
+        <button type="button" class="drawer-acc-trigger" aria-expanded="false">전립선 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="drawer-acc-panel">
+          <a href="./clinic_02.html#overview">전립선 개요</a>
+          <a href="./clinic_02.html#bph">전립선비대증</a>
+          <a href="./clinic_02.html#holep">HoLEP 시술</a>
+          <a href="./clinic_02.html#urolift">유로리프트</a>
+          <a href="./clinic_02.html#prostatitis">전립선염</a>
+          <a href="./clinic_02.html#cancer">전립선암</a>
+          <a href="./clinic_02.html#prostatodynia">전립선통</a>
+        </div>
+      </div>
+      <div class="drawer-acc-item">
+        <button type="button" class="drawer-acc-trigger" aria-expanded="false">남성성형 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="drawer-acc-panel"><a href="./index.html#specialties">남성성형 전체 보기</a></div>
+      </div>
+      <div class="drawer-acc-item">
+        <button type="button" class="drawer-acc-trigger" aria-expanded="false">성기능장애 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="drawer-acc-panel"><a href="./index.html#specialties">조루증 · 발기부전</a></div>
+      </div>
+      <div class="drawer-acc-item">
+        <button type="button" class="drawer-acc-trigger" aria-expanded="false">정관수술 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="drawer-acc-panel"><a href="./index.html#specialties">무도정관수술 · 미세복원</a></div>
+      </div>
+      <div class="drawer-acc-item">
+        <button type="button" class="drawer-acc-trigger" aria-expanded="false">포경수술 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="drawer-acc-panel"><a href="./index.html#specialties">레이저포경수술</a></div>
+      </div>
+      <div class="drawer-acc-item is-open">
+        <button type="button" class="drawer-acc-trigger" aria-expanded="true">상담/예약 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="drawer-acc-panel">
+          <a href="./qna_01.html#consultation">Meet the expert (수술상담)</a>
+          <a href="./qna_01.html#reservation" class="is-active">온라인예약</a>
+        </div>
+      </div>
+    </nav>
+    <div class="drawer-footer">
+      <a href="./qna_01.html#reservation" class="btn btn-primary btn-sm">온라인 예약</a>
+      <a href="./qna_01.html#consultation" class="btn btn-outline btn-sm">수술상담</a>
+    </div>
+  </aside>
+
+  <!-- 7. 모바일 하단 3분할 고정 CTA 바 -->
+  <div class="mobile-sticky-cta" aria-label="빠른 상담 바">
+    <div class="mobile-sticky-cta-grid">
+      <a href="tel:0230187575" class="m-cta-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>전화상담</span>
+      </a>
+      <button type="button" class="m-cta-btn" data-kakao-modal>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        <span>카톡상담</span>
+      </button>
+      <a href="./qna_01.html#reservation" class="m-cta-btn is-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span>온라인 예약</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- 시안용 접수 완료 안내 모달 (실제 서버 전송 없음) -->
+  <div id="submitModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="submitModalTitle">
+    <div class="modal-dialog">
+      <div class="modal-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3 id="submitModalTitle">시안용 접수 완료 안내</h3>
+      <p>본 페이지는 정적 HTML 디자인 시안으로 실제 서버 전송은 이루어지지 않으며, 프론트엔드 유효성 검사 및 접수 완료 모달 동작을 확인하기 위한 목업입니다.</p>
+      <div id="modalSummary" class="modal-summary"></div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-primary btn-sm" data-modal-close>확인</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 카카오톡 상담 안내 모달 -->
+  <div id="kakaoModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="kakaoModalTitle">
+    <div class="modal-dialog">
+      <div class="modal-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      </div>
+      <h3 id="kakaoModalTitle">카카오톡 1:1 비공개 상담 안내</h3>
+      <p>카카오톡 친구추가에서 아래 공식 ID를 검색하시면 프라이빗한 1:1 상담을 받으실 수 있습니다.</p>
+      <div class="modal-summary">
+        <div><strong>카카오톡 ID:</strong> gnjurology</div>
+        <div><strong>상담 가능 시간:</strong> 평일 09:00 ~ 18:00 / 토요일 09:00 ~ 13:00</div>
+        <div><strong>전화·문자 문의:</strong> 02-3018-7575 / 010-9190-7575</div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-outline btn-sm" data-copy-kakao>카카오톡 ID 복사</button>
+        <button type="button" class="btn btn-primary btn-sm" data-kakao-close>닫기</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>
