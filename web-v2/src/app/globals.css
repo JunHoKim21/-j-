@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+:root {
+  /* 레퍼런스 정밀 명암 대비 토큰 (#101010 제트블랙 ↔ #FFFFFF 순백 ↔ #E9E9E9/#F6F6F6 라이트그레이) */
+  --gj-bg-obsidian: #101010;
+  --gj-bg-obsidian-soft: #181818;
+  --gj-bg-paper: #ffffff;
+  --gj-bg-cool: #f6f6f6;
+  --gj-bg-cool-deep: #e9e9e9;
+
+  /* 시그니처 포인트 & 메디컬 신뢰 컬러 */
+  --gj-brand-navy: #0f253e;
+  --gj-brand-blue: #1d5b9b;
+  --gj-brand-brass: #fca400;
+  --gj-brand-brass-deep: #8f5900;
+  --gj-brand-brass-light: #ffc14d;
+
+  --gj-ink-dark: #000000;
+  --gj-ink-muted: #666666;
+  --gj-ink-on-dark: #ffffff;
+  --gj-ink-on-dark-muted: rgba(255, 255, 255, 0.72);
+
+  --gj-line-light: #e4e4e4;
+  --gj-line-dark: rgba(255, 255, 255, 0.16);
+
+  --gj-header-h-pc: 110px;
+  --gj-header-h-mo: 60px;
+  --gj-container-w: 1230px;
+}
+
+@theme inline {
+  --color-gj-obsidian: var(--gj-bg-obsidian);
+  --color-gj-obsidian-soft: var(--gj-bg-obsidian-soft);
+  --color-gj-paper: var(--gj-bg-paper);
+  --color-gj-cool: var(--gj-bg-cool);
+  --color-gj-cool-deep: var(--gj-bg-cool-deep);
+
+  --color-gj-navy: var(--gj-brand-navy);
+  --color-gj-blue: var(--gj-brand-blue);
+  --color-gj-brass: var(--gj-brand-brass);
+  --color-gj-brass-deep: var(--gj-brand-brass-deep);
+  --color-gj-brass-light: var(--gj-brand-brass-light);
+
+  --color-gj-ink: var(--gj-ink-dark);
+  --color-gj-muted: var(--gj-ink-muted);
+  --color-gj-line: var(--gj-line-light);
+
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-display: "Cormorant Garamond", "Pretendard Variable", Georgia, serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--gj-bg-obsidian);
+    color: var(--gj-ink-dark);
+    overflow-x: clip;
+    word-break: keep-all;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+.gj-container {
+  width: 100%;
+  max-width: var(--gj-container-w);
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+
+@media (min-width: 1024px) {
+  .gj-container {
+    padding-inline: 15px;
+  }
+}
+
+.gj-no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.gj-no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes gj-marquee-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.gj-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: gj-marquee-scroll 30s linear infinite;
+}
+
+.gj-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes gj-hero-zoom {
+  0% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.gj-hero-active-img {
+  animation: gj-hero-zoom 6.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .gj-marquee-track,
+  .gj-hero-active-img {
+    animation: none !important;
+  }
+  [data-gj-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
