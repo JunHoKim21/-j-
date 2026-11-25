@@ -52,7 +52,7 @@ export function HeroSlider() {
     <section
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
-      className="relative flex h-[calc(100svh-60px)] min-h-[580px] max-h-[880px] items-end overflow-hidden bg-surface-dark pb-12 text-white lg:h-[calc(100svh-84px)] lg:pb-20"
+      className="relative flex h-[100svh] min-h-[640px] max-h-[960px] items-end overflow-hidden bg-surface-dark pb-12 pt-[60px] text-white lg:pb-20 lg:pt-[104px]"
     >
       {/* 배경 크로스페이드 슬라이드 */}
       {HERO_SLIDES.map((slide, idx) => (

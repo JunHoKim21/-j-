@@ -1,0 +1,8 @@
+import type { Metadata } from "next";
+import { SignupForm } from "@/components/forms/AuthForms";
+
+export const metadata: Metadata = { title: "간편 회원가입" };
+
+export default function SignupPage() {
+  return <SignupForm />;
+}

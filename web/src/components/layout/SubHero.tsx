@@ -15,12 +15,12 @@ interface SubHeroProps {
 
 /**
  * 서브 페이지 공통 상단 배너
- * - 고정 헤더(60px/80px) 높이를 고려한 상단 여백 확보
+ * - 풀블리드 레이아웃 기준 고정 헤더(모바일 60px / PC 104px) 높이를 고려한 상단 여백 확보
  * - 자극적 비주얼을 배제한 Deep Navy 면 대비 + 브레드크럼 + 단일 H1
  */
 export function SubHero({ kicker, title, description, breadcrumbs }: SubHeroProps) {
   return (
-    <section className="bg-surface-dark py-12 text-white lg:py-16">
+    <section className="bg-surface-dark pb-12 pt-[104px] text-white lg:pb-16 lg:pt-[156px]">
       <div className="container-page">
         <nav aria-label="현재 위치" className="mb-4 flex flex-wrap items-center gap-1.5 text-[12.5px] text-white/60">
           <Link href="/" className="hover:text-white">

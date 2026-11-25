@@ -21,7 +21,7 @@ export default function LocationPage() {
       />
 
       {/* 2인 진료시간표 (Surface 1) */}
-      <section className="bg-surface-1 py-14 lg:py-20">
+      <section id="schedule" className="scroll-mt-[76px] bg-surface-1 py-14 lg:scroll-mt-[120px] lg:py-20">
         <div className="container-page">
           <div className="mb-8">
             <p className="text-[12px] font-semibold tracking-[0.14em] text-brand-brass">
@@ -36,7 +36,7 @@ export default function LocationPage() {
       </section>
 
       {/* 오시는 길 · 지도 슬롯 · 연락처 (Surface 0) */}
-      <section className="bg-surface-0 py-14 lg:py-24">
+      <section id="map" className="scroll-mt-[76px] bg-surface-0 py-14 lg:scroll-mt-[120px] lg:py-24">
         <div className="container-page">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
             {/* 지도 플레이스홀더 (카카오맵 API 키 발급 후 교체) */}

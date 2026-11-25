@@ -222,7 +222,7 @@ export default async function DepartmentDetailPage({ params }: DetailPageProps) 
             </article>
 
             {/* 우측 Sticky 사이드바 (PC) / 하단 카드 (모바일) */}
-            <aside className="space-y-5 lg:sticky lg:top-[104px] lg:col-span-4">
+            <aside className="space-y-5 lg:sticky lg:top-[128px] lg:col-span-4">
               <div className="rounded-2xl bg-brand-navy p-6 text-white sm:p-7">
                 <p className="text-[11.5px] font-bold tracking-[0.14em] text-brand-brass">
                   PRIVATE CONSULTATION
