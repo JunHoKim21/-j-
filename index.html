@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>강남J비뇨기과 반응형 디자인 시안 비교 (A / B)</title>
+  <title>강남J비뇨기과의원 반응형 웹사이트 시안 통합 비교 (4종)</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -16,10 +16,11 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 40px 20px;
+      padding: 48px 20px;
+      word-break: keep-all;
     }
     .wrap {
-      max-width: 1040px;
+      max-width: 1120px;
       width: 100%;
       margin: 0 auto;
     }
@@ -31,13 +32,13 @@
       display: inline-block;
       font-size: 12.5px;
       font-weight: 700;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: #1D5B9B;
       margin-bottom: 10px;
     }
     h1 {
-      font-size: clamp(24px, 3.2vw, 36px);
+      font-size: clamp(24px, 3.2vw, 38px);
       font-weight: 800;
       color: #0F2744;
       letter-spacing: -0.025em;
@@ -47,6 +48,26 @@
       font-size: 15.5px;
       color: #4B5563;
     }
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: #0F2744;
+      margin: 0 0 14px;
+    }
+    .section-label::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #D8E2EE;
+    }
+    .section-label.secondary {
+      margin-top: 38px;
+      color: #4B5563;
+    }
     .grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -54,14 +75,30 @@
     }
     .card {
       background: #FFFFFF;
-      border-radius: 16px;
-      padding: 34px 30px;
+      border-radius: 18px;
+      padding: 32px 28px;
       border: 1px solid #DDE5EF;
       box-shadow: 0 10px 28px rgba(15, 39, 68, 0.06);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 24px;
+      gap: 22px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(15, 39, 68, 0.11);
+    }
+    .card.card-v2 {
+      background: #101010;
+      color: #FFFFFF;
+      border-color: rgba(252, 164, 0, 0.45);
+      box-shadow: 0 14px 36px rgba(16, 16, 16, 0.18);
+    }
+    .card.card-web {
+      background: #0F253E;
+      color: #FFFFFF;
+      border-color: rgba(200, 155, 75, 0.4);
     }
     .card.card-b {
       background: #1C2026;
@@ -72,9 +109,18 @@
       display: inline-block;
       font-size: 12px;
       font-weight: 700;
-      padding: 4px 10px;
+      padding: 4px 11px;
       border-radius: 999px;
       margin-bottom: 12px;
+    }
+    .card-v2 .badge {
+      background: #FCA400;
+      color: #101010;
+    }
+    .card-web .badge {
+      background: rgba(200, 155, 75, 0.2);
+      color: #E7C27D;
+      border: 1px solid rgba(200, 155, 75, 0.45);
     }
     .card-a .badge {
       background: #EBF3FB;
@@ -86,29 +132,29 @@
       border: 1px solid rgba(176, 145, 105, 0.38);
     }
     .card h2 {
-      font-size: 23px;
+      font-size: 22px;
       font-weight: 700;
+      letter-spacing: -0.02em;
       margin-bottom: 10px;
     }
     .card-a h2 { color: #0F2744; }
     .card p {
       font-size: 14.5px;
-      line-height: 1.65;
+      line-height: 1.68;
       margin-bottom: 18px;
     }
     .card-a p { color: #4B5563; }
-    .card-b p { color: rgba(255, 255, 255, 0.78); }
+    .card-v2 p, .card-web p, .card-b p { color: rgba(255, 255, 255, 0.78); }
     .sub-links {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 8px;
-      margin-bottom: 18px;
     }
     .sub-links a {
       font-size: 13px;
       font-weight: 600;
       padding: 9px 12px;
-      border-radius: 6px;
+      border-radius: 8px;
       text-align: center;
       text-decoration: none;
       transition: opacity 0.18s;
@@ -117,23 +163,33 @@
       background: #F4F7FA;
       color: #0F2744;
     }
+    .card-v2 .sub-links a,
+    .card-web .sub-links a,
     .card-b .sub-links a {
-      background: rgba(255, 255, 255, 0.08);
-      color: rgba(255, 255, 255, 0.88);
+      background: rgba(255, 255, 255, 0.09);
+      color: rgba(255, 255, 255, 0.9);
     }
     .sub-links a:hover { opacity: 0.82; }
     .main-btn {
       display: block;
       width: 100%;
       padding: 14px 20px;
-      border-radius: 8px;
+      border-radius: 10px;
       text-align: center;
       font-size: 15.5px;
       font-weight: 700;
       text-decoration: none;
-      transition: transform 0.18s;
+      transition: transform 0.18s, opacity 0.18s;
     }
-    .main-btn:hover { transform: translateY(-1px); }
+    .main-btn:hover { transform: translateY(-1px); opacity: 0.94; }
+    .card-v2 .main-btn {
+      background: #FCA400;
+      color: #101010;
+    }
+    .card-web .main-btn {
+      background: #C89B4B;
+      color: #0F253E;
+    }
     .card-a .main-btn {
       background: #1D5B9B;
       color: #FFFFFF;
@@ -144,13 +200,14 @@
     }
     .foot {
       text-align: center;
-      margin-top: 32px;
+      margin-top: 38px;
       font-size: 13px;
       color: #6B7280;
     }
     @media (max-width: 767px) {
+      body { padding: 32px 16px; }
       .grid { grid-template-columns: 1fr; }
-      .card { padding: 26px 22px; }
+      .card { padding: 26px 20px; }
     }
   </style>
 </head>
@@ -158,16 +215,50 @@
   <div class="wrap">
     <header class="head">
       <span class="eyebrow">GANGNAM J UROLOGY CLINIC · DESIGN PROTOTYPES</span>
-      <h1>강남J비뇨기과 반응형 HTML 디자인 시안</h1>
-      <p>아래 2가지 디자인 방향(PC · 모바일 반응형)을 선택하여 바로 확인하실 수 있습니다.</p>
+      <h1>강남J비뇨기과의원 반응형 디자인 시안 비교</h1>
+      <p>Next.js 실전 반응형 웹 2종(web-v2 · web)과 HTML 디자인 시안 2종(A · B)을 한곳에서 바로 확인하실 수 있습니다.</p>
     </header>
 
-    <main class="grid">
-      <section class="card card-a">
+    <div class="section-label">NEXT.JS FULL RESPONSIVE PROTOTYPES (48 PAGES · INTERACTIVE)</div>
+    <section class="grid" aria-label="Next.js 반응형 웹사이트 시안">
+      <article class="card card-v2">
         <div>
-          <span class="badge">방향 A · 추천안</span>
+          <span class="badge">NEW · 시그니처 에디션 (web-v2)</span>
+          <h2>하이엔드 풀스케일 비뇨의학 리뉴얼</h2>
+          <p>순수 제트블랙(#101010)·순백(#FFF) 명암 교차 리듬, 프로스트 라이트 2단 헤더+플로팅 검색, 106px 초대형 히어로, 5대 센터 호버 아코디언, 24개 세부 진료·유튜브(@uroj) 모달·비회원 예약(확인 대기)·1:1 비밀상담까지 48개 전체 페이지를 구현했습니다.</p>
+          <div class="sub-links">
+            <a href="https://gangnam-j-web-v2.vercel.app/about/doctors" target="_blank" rel="noopener noreferrer">2인 전문의 협진</a>
+            <a href="https://gangnam-j-web-v2.vercel.app/departments/prostate/holep" target="_blank" rel="noopener noreferrer">HoLEP 상세</a>
+            <a href="https://gangnam-j-web-v2.vercel.app/media" target="_blank" rel="noopener noreferrer">Video Gallery</a>
+            <a href="https://gangnam-j-web-v2.vercel.app/reservation" target="_blank" rel="noopener noreferrer">온라인 예약</a>
+          </div>
+        </div>
+        <a href="https://gangnam-j-web-v2.vercel.app/" target="_blank" rel="noopener noreferrer" class="main-btn">web-v2 메인 열기 &rarr;</a>
+      </article>
+
+      <article class="card card-web">
+        <div>
+          <span class="badge">NEXT.JS · GSAP 에디토리얼 (web)</span>
+          <h2>딥네이비 · 브래스 모션 리뉴얼</h2>
+          <p>Deep Navy(#0F253E) &amp; Warm Brass(#C89B4B) 톤 기반의 Next.js 반응형 시안. GSAP 키네틱 타이포, 5열 3:4 진료 포스터, 핀 스토리텔링, 2인 전문의 스포트라이트, 온라인 예약 및 경량 회원 1:1 비밀상담 플로우를 제공합니다.</p>
+          <div class="sub-links">
+            <a href="https://gangnam-j-web.vercel.app/about/doctors" target="_blank" rel="noopener noreferrer">2인 전문의 소개</a>
+            <a href="https://gangnam-j-web.vercel.app/departments" target="_blank" rel="noopener noreferrer">5대 진료센터</a>
+            <a href="https://gangnam-j-web.vercel.app/reservation" target="_blank" rel="noopener noreferrer">온라인 예약</a>
+            <a href="https://gangnam-j-web.vercel.app/consultation" target="_blank" rel="noopener noreferrer">1:1 비밀상담</a>
+          </div>
+        </div>
+        <a href="https://gangnam-j-web.vercel.app/" target="_blank" rel="noopener noreferrer" class="main-btn">web 메인 열기 &rarr;</a>
+      </article>
+    </section>
+
+    <div class="section-label secondary">STATIC HTML PROTOTYPES (SITE A · SITE B)</div>
+    <section class="grid" aria-label="정적 HTML 디자인 시안">
+      <article class="card card-a">
+        <div>
+          <span class="badge">방향 A · 정적 HTML</span>
           <h2>전문·신뢰 중심 (Clinical Authority)</h2>
-          <p>Deep Navy &amp; Trust Blue 기반의 대학병원급 정통 비뇨의학 톤. 풀스크린 3슬라이드 히어로, 초대형 2026 연혁, 비대칭 Bento 지표 및 미디어룸을 제공합니다.</p>
+          <p>Deep Navy &amp; Trust Blue 기반의 대학병원급 정통 비뇨의학 톤. 풀스크린 3슬라이드 히어로, 초대형 연혁, 비대칭 Bento 지표 및 미디어룸을 제공합니다.</p>
           <div class="sub-links">
             <a href="./site_a/hp_01.html">의료진 소개</a>
             <a href="./site_a/clinic_02.html">전립선 센터</a>
@@ -176,11 +267,11 @@
           </div>
         </div>
         <a href="./site_a/index.html" class="main-btn">시안 A 메인 열기 &rarr;</a>
-      </section>
+      </article>
 
-      <section class="card card-b">
+      <article class="card card-b">
         <div>
-          <span class="badge">방향 B · 프라이빗 에디토리얼</span>
+          <span class="badge">방향 B · 정적 HTML</span>
           <h2>모던·프리미엄 중심 (Modern Private Clinic)</h2>
           <p>Deep Charcoal &amp; Warm Bronze 기반의 강남권 프라이빗 클리닉 톤. 3S 원칙 워터마크 밴드, 공간 에디토리얼 갤러리 및 흰색 카드형 의학 도식을 제공합니다.</p>
           <div class="sub-links">
@@ -191,11 +282,11 @@
           </div>
         </div>
         <a href="./site_b/index.html" class="main-btn">시안 B 메인 열기 &rarr;</a>
-      </section>
-    </main>
+      </article>
+    </section>
 
     <footer class="foot">
-      HTML / CSS / Vanilla JS 정적 디자인 시안 · PC(1920/1440/1280px) &amp; 모바일(390/375px) 대응
+      강남J비뇨기과의원 반응형 디자인 시안 포털 · PC(1920/1440/1280px) &amp; 모바일(390/375px) 대응
     </footer>
   </div>
 </body>
