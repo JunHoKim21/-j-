@@ -83,9 +83,9 @@ export function GsapKineticBanner() {
     <section
       ref={wrapRef}
       aria-label="강남J비뇨기과 브랜드 선언"
-      className="relative overflow-hidden bg-surface-dark py-20 text-white lg:py-32"
+      className="relative overflow-hidden bg-surface-dark py-28 text-white lg:py-48"
     >
-      <div className="pointer-events-none select-none space-y-2 opacity-[0.14]">
+      <div className="pointer-events-none select-none space-y-3 opacity-[0.14] lg:space-y-5">
         <div
           ref={lineTopRef}
           className="whitespace-nowrap text-[56px] font-black leading-none tracking-[-0.04em] text-white sm:text-[96px] lg:text-[148px]"
@@ -102,7 +102,7 @@ export function GsapKineticBanner() {
 
       <div
         ref={copyRef}
-        className="container-page relative z-10 -mt-16 text-center sm:-mt-28 lg:-mt-40"
+        className="container-page relative z-10 -mt-20 text-center sm:-mt-32 lg:-mt-44"
       >
         <p className="text-[12px] font-bold tracking-[0.22em] text-brand-gold">
           IT&apos;S CLINICAL PRECISION

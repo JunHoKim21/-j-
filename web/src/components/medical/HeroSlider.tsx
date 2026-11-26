@@ -35,23 +35,18 @@ const HERO_SLIDES = [
 
 export function HeroSlider() {
   const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
 
   useEffect(() => {
-    if (paused) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const timer = window.setInterval(() => {
       setActive((prev) => (prev + 1) % HERO_SLIDES.length);
-    }, 6500);
+    }, 6200);
     return () => window.clearInterval(timer);
-  }, [paused]);
+  }, []);
 
   const current = HERO_SLIDES[active];
 
   return (
     <section
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
       className="relative flex h-[100svh] min-h-[640px] max-h-[960px] items-end overflow-hidden bg-surface-dark pb-12 pt-[60px] text-white lg:pb-20 lg:pt-[104px]"
     >
       {/* 배경 크로스페이드 슬라이드 */}
