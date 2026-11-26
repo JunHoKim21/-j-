@@ -281,21 +281,21 @@ export function GjSiteHeader() {
         </div>
       </header>
 
-      {/* 헤더 우측 하단 플로팅 빠른 진료 검색 필 (레퍼런스 시그니처 460x48px) */}
-      <div className="pointer-events-none fixed inset-x-0 top-[70px] z-40 px-4 lg:top-[122px] lg:px-8">
+      {/* 헤더 우측 하단 플로팅 빠른 진료 검색 필 (PC 전용 — 모바일은 하단 대형 검색바와 중복 방지) */}
+      <div className="pointer-events-none fixed inset-x-0 top-[122px] z-40 hidden px-8 lg:block">
         <div className="mx-auto flex max-w-[1530px] justify-end">
-          <div className="pointer-events-auto relative w-full max-w-[360px] lg:max-w-[440px]">
-            <div className="flex h-[44px] items-center gap-2.5 rounded-xl bg-white/95 px-3 shadow-[0_8px_28px_rgba(0,0,0,0.14)] ring-1 ring-black/5 backdrop-blur-md lg:h-[48px]">
-              <span className="inline-flex h-7 shrink-0 items-center rounded-md bg-gradient-to-br from-gj-brass to-[#7B6135] px-2 text-[11px] font-extrabold tracking-tight text-white">
-                진료
+          <div className="pointer-events-auto relative w-full max-w-[440px]">
+            <div className="flex h-[48px] items-center gap-2.5 rounded-xl bg-white/95 px-3 shadow-[0_8px_28px_rgba(0,0,0,0.14)] ring-1 ring-black/5 backdrop-blur-md">
+              <span className="inline-flex h-7 shrink-0 items-center rounded-md bg-gradient-to-br from-gj-brass to-[#7B6135] px-2.5 text-[11px] font-extrabold tracking-tight text-white">
+                검색
               </span>
               <input
                 type="text"
                 value={quickQuery}
                 onChange={(e) => setQuickQuery(e.target.value)}
-                placeholder="증상이나 시술명을 입력해 주세요"
-                aria-label="상단 빠른 진료 검색"
-                className="w-full bg-transparent text-[13.5px] font-medium text-black placeholder:text-black/45 focus:outline-none lg:text-[14px]"
+                placeholder="증상 키워드 빠른 찾기 (예: HoLEP, 요로결석)"
+                aria-label="증상 키워드 빠른 찾기"
+                className="w-full bg-transparent text-[14px] font-medium text-black placeholder:text-black/45 focus:outline-none"
               />
               {quickQuery ? (
                 <button

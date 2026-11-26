@@ -17,12 +17,11 @@ export function GjHeroShowcase() {
   }, [total]);
 
   const current = CLINIC_HERO_SLIDES[activeIndex];
-  const isLightSlide = current.tone === "light";
 
   return (
     <section
       aria-label="강남J비뇨기과의원 메인 히어로"
-      className="relative flex h-[100svh] min-h-[680px] max-h-[1080px] w-full flex-col justify-end overflow-hidden bg-white"
+      className="relative flex h-[100svh] min-h-[680px] max-h-[1080px] w-full flex-col justify-end overflow-hidden bg-[#101010]"
     >
       {/* 풀블리드 고해상도 배경 사진 (텍스트 없는 순수 건축·클리닉 사진만 사용) */}
       {CLINIC_HERO_SLIDES.map((slide, idx) => {
@@ -44,35 +43,21 @@ export function GjHeroShowcase() {
                 active && "gj-hero-active-img"
               )}
             />
-            {/* 슬라이드 명도에 맞춘 절제된 하단 가독성 그라데이션 (원본 사진의 밝기와 공간감 보존) */}
-            {slide.tone === "light" ? (
-              <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/35 to-white/10" />
-            ) : (
-              <div className="absolute inset-0 bg-gradient-to-t from-[#101010]/85 via-[#101010]/30 to-black/15" />
-            )}
+            {/* 전 슬라이드 통일 다크 스크림으로 하단 텍스트 명도 대비 극대화 */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#101010]/88 via-[#101010]/42 to-black/15" />
           </div>
         );
       })}
 
       {/* 레퍼런스 시그니처 히어로 하단 수평 구도: 초대형 100px+ 영문 타이틀(좌) + 3줄 국문 철학(우) */}
-      <div
-        className={cn(
-          "relative z-10 mx-auto w-full max-w-[1440px] px-5 pb-20 lg:px-14 lg:pb-16",
-          isLightSlide ? "text-black" : "text-white"
-        )}
-      >
+      <div className="relative z-10 mx-auto w-full max-w-[1440px] px-5 pb-20 text-white lg:px-14 lg:pb-16">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:gap-14">
           <h1 className="text-[44px] font-extrabold leading-[1.06] tracking-[-0.035em] sm:text-[68px] lg:text-[92px] xl:text-[106px]">
             <span className="block">{current.displayTop}</span>
             <span className="block">{current.displayBottom}</span>
           </h1>
 
-          <p
-            className={cn(
-              "max-w-[460px] pb-2 text-[15px] font-medium leading-[1.68] tracking-[-0.015em] sm:text-[18px] lg:text-[21px]",
-              isLightSlide ? "text-black/82" : "text-white/88"
-            )}
-          >
+          <p className="max-w-[460px] pb-2 text-[15px] font-medium leading-[1.68] tracking-[-0.015em] text-white/90 sm:text-[18px] lg:text-[21px]">
             {current.subcopyLines.map((line) => (
               <span key={line} className="block">
                 {line}
@@ -106,12 +91,8 @@ export function GjHeroShowcase() {
                 className={cn(
                   "h-[5px] rounded-full transition-all duration-300",
                   idx === activeIndex
-                    ? isLightSlide
-                      ? "w-9 bg-black"
-                      : "w-9 bg-white"
-                    : isLightSlide
-                      ? "w-1.5 bg-black/30 hover:bg-black/60"
-                      : "w-1.5 bg-white/35 hover:bg-white/65"
+                    ? "w-9 bg-white"
+                    : "w-1.5 bg-white/35 hover:bg-white/65"
                 )}
               />
             ))}
