@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Play, X } from "lucide-react";
+import { ExternalLink, Play, X } from "lucide-react";
 import { FEATURED_YOUTUBE_VIDEOS, type CuratedYouTubeVideo } from "@/lib/data/media";
 
 interface RelatedYouTubeStripProps {
@@ -45,39 +45,66 @@ export function RelatedYouTubeStrip({
     <div className="space-y-4">
       <h2 className="text-[20px] font-bold text-brand-navy sm:text-[22px]">{heading}</h2>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        {videos.map((video) => (
-          <button
-            key={video.id}
-            type="button"
-            onClick={() => setSelected(video)}
-            className="group flex flex-col overflow-hidden rounded-xl bg-surface-1 text-left transition-colors hover:bg-surface-2"
-          >
-            <div className="relative aspect-video w-full overflow-hidden bg-surface-dark">
-              <img
-                src="/assets/hospital/visual-07.jpg"
-                alt=""
-                aria-hidden="true"
-                loading="lazy"
-                className="h-full w-full object-cover opacity-35 transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-tr from-surface-dark via-brand-navy/80 to-surface-dark/40" />
-              <span className="absolute left-3 top-3 rounded-full bg-brand-gold px-2.5 py-0.5 text-[11px] font-bold text-white">
-                {video.category}
-              </span>
-              <span className="absolute left-1/2 top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-surface-0/95 text-surface-dark shadow-md transition-colors group-hover:bg-brand-gold group-hover:text-white">
-                <Play className="ml-0.5 h-4 w-4 fill-current" />
-              </span>
-            </div>
-            <div className="p-4">
-              <h3 className="line-clamp-2 text-[14.5px] font-bold leading-snug text-brand-navy">
-                {video.title}
-              </h3>
-            </div>
-          </button>
-        ))}
+        {videos.map((video) => {
+          const inner = (
+            <>
+              <div className="relative aspect-video w-full overflow-hidden bg-surface-dark">
+                <img
+                  src="/assets/hospital/visual-07.jpg"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  className="h-full w-full object-cover opacity-35 transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-surface-dark via-brand-navy/80 to-surface-dark/40" />
+                <span className="absolute left-3 top-3 rounded-full bg-brand-gold px-2.5 py-0.5 text-[11px] font-bold text-white">
+                  {video.category}
+                </span>
+                {!video.embeddable && (
+                  <span className="absolute right-3 top-3 rounded-full bg-black/80 px-2.5 py-0.5 text-[11px] font-bold text-white">
+                    YouTube ↗
+                  </span>
+                )}
+                <span className="absolute left-1/2 top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-surface-0/95 text-surface-dark shadow-md transition-colors group-hover:bg-brand-gold group-hover:text-white">
+                  {video.embeddable ? (
+                    <Play className="ml-0.5 h-4 w-4 fill-current" />
+                  ) : (
+                    <ExternalLink className="h-4 w-4" />
+                  )}
+                </span>
+              </div>
+              <div className="p-4">
+                <h3 className="line-clamp-2 text-[14.5px] font-bold leading-snug text-brand-navy">
+                  {video.title}
+                </h3>
+              </div>
+            </>
+          );
+
+          return video.embeddable ? (
+            <button
+              key={video.id}
+              type="button"
+              onClick={() => setSelected(video)}
+              className="group flex flex-col overflow-hidden rounded-xl bg-surface-1 text-left transition-colors hover:bg-surface-2"
+            >
+              {inner}
+            </button>
+          ) : (
+            <a
+              key={video.id}
+              href={`https://www.youtube.com/watch?v=${video.videoId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col overflow-hidden rounded-xl bg-surface-1 text-left transition-colors hover:bg-surface-2"
+            >
+              {inner}
+            </a>
+          );
+        })}
       </div>
 
-      {selected && (
+      {selected && selected.embeddable && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
           role="dialog"
@@ -113,6 +140,7 @@ export function RelatedYouTubeStrip({
               <iframe
                 src={`https://www.youtube-nocookie.com/embed/${selected.videoId}?autoplay=1&rel=0`}
                 title={selected.title}
+                referrerPolicy="strict-origin-when-cross-origin"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 className="h-full w-full border-0"

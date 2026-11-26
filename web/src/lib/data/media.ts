@@ -6,43 +6,53 @@ export interface CuratedYouTubeVideo {
   description: string;
   /** 자극적 수술 장면·환자 인터뷰 제외 검수 플래그 */
   isSafeVerified: boolean;
+  /** 비로그인 외부 iframe(youtube-nocookie) 임베드 가능 여부 (false 시 유튜브 새 탭 연결) */
+  embeddable: boolean;
 }
 
 /**
- * 공식 유튜브(@uroj) 선별 영상 (AS-IS 메인 공식 임베드 ID 기반, 초기 iframe 0개 Facade 적용)
- * ※ 최종 운영 전 고객사 검수 목록(C-07) 확정 시 DB media_item으로 교체 관리
+ * 공식 유튜브(@uroj) 선별 영상 (비로그인 연령 제한 미적용 검증 완료, 초기 iframe 0개 Facade 적용)
+ * - embeddable: true → 모달 재생 / embeddable: false → YouTube ↗ 새 탭 바로가기
  */
 export const FEATURED_YOUTUBE_VIDEOS: CuratedYouTubeVideo[] = [
   {
     id: "yt-1",
-    videoId: "1af5dsLjxi4",
-    category: "전립선 · HoLEP",
-    title: "전립선비대증 수술적 치료, HoLEP과 유로리프트의 차이점",
-    description: "약물치료로 호전되지 않는 전립선비대증의 수술 기준과 회복 과정을 전문의가 직접 설명합니다.",
+    videoId: "7Kkpg3a_LMU",
+    category: "전립선 · 행복한 배뇨",
+    title: "정상 크기의 전립선도 전립선비대증 수술이 필요한가?",
+    description:
+      "전립선 크기뿐만 아니라 요도 압박 형태와 배뇨 증상에 따른 수술적 치료 판단 기준을 전문의가 직접 설명합니다.",
     isSafeVerified: true,
+    embeddable: true,
   },
   {
     id: "yt-2",
-    videoId: "P0Hb0QXFELI",
-    category: "음경임플란트",
-    title: "음경임플란트의 오해와 진실, 제원 및 선택 기준 안내",
-    description: "굴곡형·팽창형 보형물의 구조적 특징과 수술 전 반드시 확인해야 할 사항을 정리했습니다.",
+    videoId: "JBmQy0HCsWc",
+    category: "성기능 · QnA",
+    title: "[QnA : 음경임플란트편] 탈모약을 먹으면 발기부전이 오나요?",
+    description:
+      "약물 복용과 성기능 저하의 연관성에 대한 궁금증과 단계별 성기능 평가·치료 기준을 알기 쉽게 정리했습니다.",
     isSafeVerified: true,
+    embeddable: true,
   },
   {
     id: "yt-3",
-    videoId: "cyUSfApV_vI",
-    category: "남성재건 · QnA",
-    title: "음경만곡증·이물질제거, 정확한 진단과 재건 원칙",
-    description: "잘못된 시술 후 부작용이나 선천적·후천적 만곡증의 안전한 교정 원리를 안내합니다.",
+    videoId: "kauJae1TL-U",
+    category: "남성재건 · 컬럼",
+    title: "성적 좌절감의 원인 '음경만곡증' — 박천진 원장의 읽어주는 컬럼",
+    description:
+      "선천적·후천적 음경만곡증의 원인과 정확한 각도 평가, 안전한 교정 원리를 전문의 칼럼으로 안내합니다.",
     isSafeVerified: true,
+    embeddable: true,
   },
   {
     id: "yt-4",
-    videoId: "eJs24POPee8",
-    category: "동시수술 · 가이드",
-    title: "전립선비대증과 발기부전, 단계별 진료 및 상담 가이드",
-    description: "중장년 남성에게 함께 나타나기 쉬운 배뇨장애와 성기능 저하의 진단 순서를 알려드립니다.",
+    videoId: "-n-wm_lgbj8",
+    category: "요로결석 · 가이드",
+    title: "작은 요로결석, 방치하면 위험하다! Silent Stone의 진실",
+    description:
+      "통증이 적은 작은 결석이라도 방치 시 신장 기능에 영향을 줄 수 있는 이유와 조기 진단 기준을 알려드립니다.",
     isSafeVerified: true,
+    embeddable: true,
   },
 ];

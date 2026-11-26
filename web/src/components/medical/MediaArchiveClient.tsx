@@ -78,39 +78,66 @@ export function MediaArchiveClient() {
             </div>
 
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {FEATURED_YOUTUBE_VIDEOS.filter((v) => v.isSafeVerified).map((video) => (
-                <button
-                  key={video.id}
-                  type="button"
-                  onClick={() => setSelectedVideo(video)}
-                  className="group flex flex-col overflow-hidden rounded-xl bg-surface-1 text-left transition-colors hover:bg-surface-2"
-                >
-                  <div className="relative aspect-video w-full overflow-hidden bg-surface-dark">
-                    <img
-                      src="/assets/hospital/visual-06.jpg"
-                      alt=""
-                      aria-hidden="true"
-                      loading="lazy"
-                      className="h-full w-full object-cover opacity-35 transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-tr from-surface-dark via-brand-navy/80 to-surface-dark/40" />
-                    <span className="absolute left-3 top-3 rounded-full bg-brand-gold px-2.5 py-0.5 text-[11px] font-bold text-white">
-                      {video.category}
-                    </span>
-                    <span className="absolute left-1/2 top-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-surface-0/95 text-surface-dark shadow-lg transition-colors group-hover:bg-brand-gold group-hover:text-white">
-                      <Play className="ml-0.5 h-5 w-5 fill-current" />
-                    </span>
-                  </div>
-                  <div className="flex flex-1 flex-col justify-between p-5">
-                    <h3 className="line-clamp-2 text-[15.5px] font-bold leading-[1.45] text-brand-navy">
-                      {video.title}
-                    </h3>
-                    <p className="mt-2 line-clamp-2 text-[13.5px] leading-[1.55] text-ink-secondary">
-                      {video.description}
-                    </p>
-                  </div>
-                </button>
-              ))}
+              {FEATURED_YOUTUBE_VIDEOS.filter((v) => v.isSafeVerified).map((video) => {
+                const cardContent = (
+                  <>
+                    <div className="relative aspect-video w-full overflow-hidden bg-surface-dark">
+                      <img
+                        src="/assets/hospital/visual-06.jpg"
+                        alt=""
+                        aria-hidden="true"
+                        loading="lazy"
+                        className="h-full w-full object-cover opacity-35 transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-tr from-surface-dark via-brand-navy/80 to-surface-dark/40" />
+                      <span className="absolute left-3 top-3 rounded-full bg-brand-gold px-2.5 py-0.5 text-[11px] font-bold text-white">
+                        {video.category}
+                      </span>
+                      {!video.embeddable && (
+                        <span className="absolute right-3 top-3 rounded-full bg-black/80 px-2.5 py-0.5 text-[11px] font-bold text-white">
+                          YouTube ↗
+                        </span>
+                      )}
+                      <span className="absolute left-1/2 top-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-surface-0/95 text-surface-dark shadow-lg transition-colors group-hover:bg-brand-gold group-hover:text-white">
+                        {video.embeddable ? (
+                          <Play className="ml-0.5 h-5 w-5 fill-current" />
+                        ) : (
+                          <ExternalLink className="h-5 w-5" />
+                        )}
+                      </span>
+                    </div>
+                    <div className="flex flex-1 flex-col justify-between p-5">
+                      <h3 className="line-clamp-2 text-[15.5px] font-bold leading-[1.45] text-brand-navy">
+                        {video.title}
+                      </h3>
+                      <p className="mt-2 line-clamp-2 text-[13.5px] leading-[1.55] text-ink-secondary">
+                        {video.description}
+                      </p>
+                    </div>
+                  </>
+                );
+
+                return video.embeddable ? (
+                  <button
+                    key={video.id}
+                    type="button"
+                    onClick={() => setSelectedVideo(video)}
+                    className="group flex flex-col overflow-hidden rounded-xl bg-surface-1 text-left transition-colors hover:bg-surface-2"
+                  >
+                    {cardContent}
+                  </button>
+                ) : (
+                  <a
+                    key={video.id}
+                    href={`https://www.youtube.com/watch?v=${video.videoId}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex flex-col overflow-hidden rounded-xl bg-surface-1 text-left transition-colors hover:bg-surface-2"
+                  >
+                    {cardContent}
+                  </a>
+                );
+              })}
             </div>
           </div>
         )}
@@ -140,7 +167,7 @@ export function MediaArchiveClient() {
       </div>
 
       {/* 유튜브 모달 플레이어 */}
-      {selectedVideo && (
+      {selectedVideo && selectedVideo.embeddable && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
           role="dialog"
@@ -176,6 +203,7 @@ export function MediaArchiveClient() {
               <iframe
                 src={`https://www.youtube-nocookie.com/embed/${selectedVideo.videoId}?autoplay=1&rel=0`}
                 title={selectedVideo.title}
+                referrerPolicy="strict-origin-when-cross-origin"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 className="h-full w-full border-0"

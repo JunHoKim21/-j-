@@ -88,18 +88,10 @@ export default function MediaPage() {
               </div>
 
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                {UROLOGY_VIDEO_GALLERY.map((video) => (
-                  <article
-                    key={video.id}
-                    data-gj-reveal
-                    className="group overflow-hidden rounded-2xl border border-gj-line bg-[#f6f6f6]"
-                  >
-                    <button
-                      type="button"
-                      onClick={() => setActiveVideo(video)}
-                      aria-label={`${video.title} 재생`}
-                      className="relative aspect-video w-full overflow-hidden bg-black text-left"
-                    >
+                {UROLOGY_VIDEO_GALLERY.map((video) => {
+                  const watchUrl = `https://www.youtube.com/watch?v=${video.videoId}`;
+                  const mediaThumb = (
+                    <>
                       <img
                         src={video.safeCoverSrc}
                         alt={video.title}
@@ -110,39 +102,90 @@ export default function MediaPage() {
                       <span className="absolute top-4 left-4 rounded-full bg-black/75 px-3 py-1 text-xs font-bold text-gj-brass">
                         {video.category}
                       </span>
+                      {!video.embeddable && (
+                        <span className="absolute top-4 right-4 rounded-full bg-black/80 px-3 py-1 text-xs font-bold text-white">
+                          YouTube ↗
+                        </span>
+                      )}
                       <span className="absolute inset-0 flex items-center justify-center">
                         <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/95 text-black shadow-xl transition group-hover:scale-110 group-hover:bg-gj-brass group-hover:text-white">
-                          <Play className="ml-0.5 h-6 w-6 fill-current" />
+                          {video.embeddable ? (
+                            <Play className="ml-0.5 h-6 w-6 fill-current" />
+                          ) : (
+                            <ExternalLink className="h-6 w-6" />
+                          )}
                         </span>
                       </span>
-                    </button>
+                    </>
+                  );
 
-                    <div className="p-6">
-                      <button
-                        type="button"
-                        onClick={() => setActiveVideo(video)}
-                        className="text-left"
-                      >
-                        <h3 className="text-lg font-bold leading-snug text-black transition group-hover:text-gj-brass-deep">
-                          {video.title}
-                        </h3>
-                      </button>
-                      <p className="mt-2 text-sm leading-relaxed text-gj-muted">
-                        {video.summary}
-                      </p>
-                      <div className="mt-4 flex flex-wrap gap-1.5">
-                        {video.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="rounded-md bg-white px-2.5 py-1 text-xs font-semibold text-black/75"
+                  return (
+                    <article
+                      key={video.id}
+                      data-gj-reveal
+                      className="group overflow-hidden rounded-2xl border border-gj-line bg-[#f6f6f6]"
+                    >
+                      {video.embeddable ? (
+                        <button
+                          type="button"
+                          onClick={() => setActiveVideo(video)}
+                          aria-label={`${video.title} 재생`}
+                          className="relative aspect-video w-full overflow-hidden bg-black text-left"
+                        >
+                          {mediaThumb}
+                        </button>
+                      ) : (
+                        <a
+                          href={watchUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${video.title} 유튜브에서 보기`}
+                          className="relative block aspect-video w-full overflow-hidden bg-black text-left"
+                        >
+                          {mediaThumb}
+                        </a>
+                      )}
+
+                      <div className="p-6">
+                        {video.embeddable ? (
+                          <button
+                            type="button"
+                            onClick={() => setActiveVideo(video)}
+                            className="text-left"
                           >
-                            {tag}
-                          </span>
-                        ))}
+                            <h3 className="text-lg font-bold leading-snug text-black transition group-hover:text-gj-brass-deep">
+                              {video.title}
+                            </h3>
+                          </button>
+                        ) : (
+                          <a
+                            href={watchUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block text-left"
+                          >
+                            <h3 className="text-lg font-bold leading-snug text-black transition group-hover:text-gj-brass-deep">
+                              {video.title}
+                            </h3>
+                          </a>
+                        )}
+                        <p className="mt-2 text-sm leading-relaxed text-gj-muted">
+                          {video.summary}
+                        </p>
+                        <div className="mt-4 flex flex-wrap gap-1.5">
+                          {video.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="rounded-md bg-white px-2.5 py-1 text-xs font-semibold text-black/75"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  </article>
-                ))}
+                    </article>
+                  );
+                })}
               </div>
             </div>
           ) : (

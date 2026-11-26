@@ -25,7 +25,7 @@ export function ClinicVideoModal({ video, onClose }: ClinicVideoModalProps) {
     };
   }, [video, onClose]);
 
-  if (!video) return null;
+  if (!video || !video.embeddable) return null;
 
   return (
     <div
@@ -66,6 +66,7 @@ export function ClinicVideoModal({ video, onClose }: ClinicVideoModalProps) {
           <iframe
             src={`https://www.youtube-nocookie.com/embed/${video.videoId}?autoplay=1&rel=0`}
             title={video.title}
+            referrerPolicy="strict-origin-when-cross-origin"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
             className="h-full w-full border-0"

@@ -51,20 +51,10 @@ export function GjVideoGallerySection() {
 
         {/* #F6F6F6 라이트 그레이 4열 카드 (gap 20px, 16:9 썸네일) */}
         <div className="gj-no-scrollbar -mx-4 mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto px-4 pb-2 lg:mx-0 lg:grid lg:grid-cols-4 lg:overflow-visible lg:px-0">
-          {UROLOGY_VIDEO_GALLERY.map((video, idx) => (
-            <article
-              key={video.id}
-              data-gj-reveal
-              data-gj-delay={String(idx * 0.06)}
-              className="group flex w-[285px] shrink-0 snap-start flex-col overflow-hidden rounded-[14px] bg-[#f6f6f6] text-black transition duration-300 hover:-translate-y-1 lg:w-auto"
-            >
-              {/* 16:9 안전 커버 (수술 원색 장면 미노출, 초기 iframe 0개) */}
-              <button
-                type="button"
-                onClick={() => setActiveVideo(video)}
-                aria-label={`${video.title} 재생`}
-                className="relative aspect-video w-full overflow-hidden bg-black text-left"
-              >
+          {UROLOGY_VIDEO_GALLERY.map((video, idx) => {
+            const watchUrl = `https://www.youtube.com/watch?v=${video.videoId}`;
+            const thumbContent = (
+              <>
                 <img
                   src={video.safeCoverSrc}
                   alt={video.title}
@@ -77,37 +67,90 @@ export function GjVideoGallerySection() {
                   {video.category}
                 </span>
 
+                {!video.embeddable && (
+                  <span className="absolute top-3 right-3 rounded-full bg-black/80 px-2.5 py-1 text-[11px] font-bold text-white">
+                    YouTube ↗
+                  </span>
+                )}
+
                 <span className="absolute inset-0 flex items-center justify-center">
                   <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/92 text-black shadow-lg transition group-hover:scale-110 group-hover:bg-gj-brass group-hover:text-white">
-                    <Play className="ml-0.5 h-5 w-5 fill-current" />
+                    {video.embeddable ? (
+                      <Play className="ml-0.5 h-5 w-5 fill-current" />
+                    ) : (
+                      <ExternalLink className="h-5 w-5" />
+                    )}
                   </span>
                 </span>
-              </button>
+              </>
+            );
 
-              <div className="flex flex-1 flex-col justify-between p-5 lg:px-6 lg:py-6">
-                <button
-                  type="button"
-                  onClick={() => setActiveVideo(video)}
-                  className="text-left"
-                >
-                  <h3 className="line-clamp-2 text-[17px] font-bold leading-[1.45] text-black transition group-hover:text-gj-brass-deep">
-                    {video.title}
-                  </h3>
-                </button>
+            return (
+              <article
+                key={video.id}
+                data-gj-reveal
+                data-gj-delay={String(idx * 0.06)}
+                className="group flex w-[285px] shrink-0 snap-start flex-col overflow-hidden rounded-[14px] bg-[#f6f6f6] text-black transition duration-300 hover:-translate-y-1 lg:w-auto"
+              >
+                {video.embeddable ? (
+                  <button
+                    type="button"
+                    onClick={() => setActiveVideo(video)}
+                    aria-label={`${video.title} 재생`}
+                    className="relative aspect-video w-full overflow-hidden bg-black text-left"
+                  >
+                    {thumbContent}
+                  </button>
+                ) : (
+                  <a
+                    href={watchUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${video.title} 유튜브에서 보기`}
+                    className="relative aspect-video w-full overflow-hidden bg-black text-left"
+                  >
+                    {thumbContent}
+                  </a>
+                )}
 
-                <div className="mt-5 flex flex-wrap gap-1.5">
-                  {video.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-md bg-white px-2.5 py-1 text-[12.5px] font-medium text-black/75"
+                <div className="flex flex-1 flex-col justify-between p-5 lg:px-6 lg:py-6">
+                  {video.embeddable ? (
+                    <button
+                      type="button"
+                      onClick={() => setActiveVideo(video)}
+                      className="text-left"
                     >
-                      {tag}
-                    </span>
-                  ))}
+                      <h3 className="line-clamp-2 text-[17px] font-bold leading-[1.45] text-black transition group-hover:text-gj-brass-deep">
+                        {video.title}
+                      </h3>
+                    </button>
+                  ) : (
+                    <a
+                      href={watchUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-left"
+                    >
+                      <h3 className="line-clamp-2 text-[17px] font-bold leading-[1.45] text-black transition group-hover:text-gj-brass-deep">
+                        {video.title}
+                      </h3>
+                    </a>
+                  )}
+
+                  <div className="mt-5 flex flex-wrap gap-1.5">
+                    {video.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-md bg-white px-2.5 py-1 text-[12.5px] font-medium text-black/75"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </div>
 
