@@ -200,14 +200,99 @@
     }
     .foot {
       text-align: center;
-      margin-top: 38px;
+      margin-top: 32px;
       font-size: 13px;
       color: #6B7280;
     }
+    .summary-section {
+      margin-top: 44px;
+      background: #FFFFFF;
+      border: 1px solid #DDE5EF;
+      border-radius: 18px;
+      padding: 30px 28px;
+      box-shadow: 0 10px 28px rgba(15, 39, 68, 0.04);
+    }
+    .summary-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .summary-head h2 {
+      font-size: 18px;
+      font-weight: 800;
+      color: #0F2744;
+      letter-spacing: -0.02em;
+    }
+    .summary-head span {
+      font-size: 13px;
+      font-weight: 600;
+      color: #1D5B9B;
+    }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .summary-box {
+      background: #F4F7FA;
+      border-radius: 12px;
+      padding: 18px 18px;
+    }
+    .summary-box h3 {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: #0F2744;
+      margin-bottom: 6px;
+    }
+    .summary-box p {
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: #4B5563;
+    }
+    .prep-strip {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid #E5ECF4;
+    }
+    .prep-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0F2744;
+      margin-bottom: 10px;
+    }
+    .prep-list {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      list-style: none;
+    }
+    .prep-list li {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 12.5px;
+      line-height: 1.5;
+      color: #334155;
+    }
+    .prep-list li strong {
+      display: block;
+      color: #0F2744;
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
+    @media (max-width: 900px) {
+      .prep-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
     @media (max-width: 767px) {
       body { padding: 32px 16px; }
-      .grid { grid-template-columns: 1fr; }
+      .grid, .summary-grid { grid-template-columns: 1fr; }
       .card { padding: 26px 20px; }
+      .summary-section { padding: 22px 18px; }
+      .prep-list { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -283,6 +368,42 @@
         </div>
         <a href="./site_b/index.html" class="main-btn">시안 4 메인 열기 &rarr;</a>
       </article>
+    </section>
+
+    <section class="summary-section" aria-label="리뉴얼 기본 개선 사항 및 준비 자료">
+      <div class="summary-head">
+        <h2>본 개발 착수 시 함께 정비되는 핵심 개선 사항</h2>
+        <span>기존 홈페이지 진단 기반 · 기본 포함</span>
+      </div>
+
+      <div class="summary-grid">
+        <div class="summary-box">
+          <h3>1. 보안 · 모바일 통합 (HTTPS &amp; 단일 반응형)</h3>
+          <p>주소창 '주의 요함(HTTP)' 경고를 보안 자물쇠(HTTPS)로 전환하고, 분리되어 있던 PC·모바일 홈페이지를 하나로 통합합니다.</p>
+        </div>
+        <div class="summary-box">
+          <h3>2. 27년 검색 순위 보존 (기존 주소 연결 &amp; 텍스트화)</h3>
+          <p>기존 주소(/@2018, m.manclinic.com) 유입이 끊기지 않게 새 페이지로 자동 연결하고, 모바일 통이미지를 검색 가능한 텍스트로 전환합니다.</p>
+        </div>
+        <div class="summary-box">
+          <h3>3. 병원 정보 · 메뉴 경로 일원화</h3>
+          <p>그동안 채널별로 달랐던 의료진·진료시간·연락처 안내와 끊긴 메뉴 경로를 박천진·이웅희 2인 최신 진료 기준으로 일괄 정비합니다.</p>
+        </div>
+        <div class="summary-box">
+          <h3>4. 의료법 · 개인정보 안전 장치</h3>
+          <p>일반·민감정보 동의 분리, 시술 하단 주의사항 안내, 최신 의료광고 기준에 맞춘 문구 정비 및 공식 유튜브(@uroj) 모달 재생을 기본 적용합니다.</p>
+        </div>
+      </div>
+
+      <div class="prep-strip">
+        <p class="prep-title">※ 본 개발 착수 시 병원 측에서 아래 4가지 자료만 전달해 주시면 바로 반영됩니다.</p>
+        <ul class="prep-list">
+          <li><strong>① 의료진 원본 사진·약력</strong>박천진 · 이웅희 원장 최신 자료</li>
+          <li><strong>② 확정 시간표 · 비급여표</strong>요일별 진료시간 · 심평원 기준 단가</li>
+          <li><strong>③ 유튜브(@uroj) 선별 목록</strong>홈페이지 노출용 설명·QnA 영상</li>
+          <li><strong>④ 도메인 관리 정보</strong>보안(HTTPS) · 기존 주소 연결용</li>
+        </ul>
+      </div>
     </section>
 
     <footer class="foot">
