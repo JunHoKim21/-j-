@@ -21,21 +21,41 @@ export function GsapDoctorSpotlight() {
       const mm = gsap.matchMedia();
       mm.add("(min-width: 1024px) and (prefers-reduced-motion: no-preference)", () => {
         gsap.from(".gsap-doctor-card", {
-          y: 44,
+          y: 32,
           opacity: 0,
-          duration: 0.85,
-          stagger: 0.16,
+          duration: 0.65,
+          stagger: 0.12,
           ease: "power3.out",
+          clearProps: "transform",
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: "top 72%",
+            start: "top 92%",
             once: true,
           },
         });
       });
     }, sectionRef);
 
-    return () => ctx.revert();
+    // 빠른 스크롤 및 전체 페이지 캡처 시 빈 화면 방지 강제 가시화 폴백
+    const fallbackTimer = window.setTimeout(() => {
+      const cards = sectionRef.current?.querySelectorAll<HTMLElement>(".gsap-doctor-card");
+      cards?.forEach((card) => {
+        if (parseFloat(window.getComputedStyle(card).opacity) < 0.99) {
+          gsap.to(card, {
+            opacity: 1,
+            y: 0,
+            duration: 0.3,
+            overwrite: "auto",
+            clearProps: "transform",
+          });
+        }
+      });
+    }, 700);
+
+    return () => {
+      window.clearTimeout(fallbackTimer);
+      ctx.revert();
+    };
   }, []);
 
   return (

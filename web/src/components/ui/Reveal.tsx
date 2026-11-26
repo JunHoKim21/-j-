@@ -42,7 +42,7 @@ export function Reveal({ children, className, delayMs = 0 }: RevealProps) {
           }
         }
       },
-      { threshold: 0.08, rootMargin: "0px 0px -30px 0px" }
+      { threshold: 0.04, rootMargin: "0px 0px -10px 0px" }
     );
 
     observer.observe(el);
@@ -50,7 +50,7 @@ export function Reveal({ children, className, delayMs = 0 }: RevealProps) {
     const fallbackTimer = window.setTimeout(() => {
       setVisible(true);
       observer.disconnect();
-    }, 1200);
+    }, 650);
 
     return () => {
       observer.disconnect();

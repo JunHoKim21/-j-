@@ -59,16 +59,17 @@ export function GsapKineticBanner() {
         if (copyRef.current) {
           gsap.fromTo(
             copyRef.current,
-            { opacity: 0.25, y: 24 },
+            { opacity: 0.35, y: 20 },
             {
               opacity: 1,
               y: 0,
-              duration: 0.9,
+              duration: 0.7,
               ease: "power3.out",
+              clearProps: "transform",
               scrollTrigger: {
                 trigger: wrapRef.current,
-                start: "top 75%",
-                toggleActions: "play none none reverse",
+                start: "top 92%",
+                once: true,
               },
             }
           );
@@ -76,25 +77,43 @@ export function GsapKineticBanner() {
       });
     }, wrapRef);
 
-    return () => ctx.revert();
+    const fallbackTimer = window.setTimeout(() => {
+      if (
+        copyRef.current &&
+        parseFloat(window.getComputedStyle(copyRef.current).opacity) < 0.99
+      ) {
+        gsap.to(copyRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+          overwrite: "auto",
+          clearProps: "transform",
+        });
+      }
+    }, 700);
+
+    return () => {
+      window.clearTimeout(fallbackTimer);
+      ctx.revert();
+    };
   }, []);
 
   return (
     <section
       ref={wrapRef}
       aria-label="강남J비뇨기과 브랜드 선언"
-      className="relative overflow-hidden bg-surface-dark py-28 text-white lg:py-48"
+      className="relative overflow-hidden bg-surface-dark pt-24 pb-20 text-white sm:py-32 lg:py-48"
     >
       <div className="pointer-events-none select-none space-y-3 opacity-[0.14] lg:space-y-5">
         <div
           ref={lineTopRef}
-          className="whitespace-nowrap text-[56px] font-black leading-none tracking-[-0.04em] text-white sm:text-[96px] lg:text-[148px]"
+          className="whitespace-nowrap text-[48px] font-black leading-none tracking-[-0.04em] text-white sm:text-[96px] lg:text-[148px]"
         >
           GANGNAM J UROLOGY · SINCE 1999 · GANGNAM J UROLOGY
         </div>
         <div
           ref={lineBottomRef}
-          className="whitespace-nowrap text-[56px] font-black leading-none tracking-[-0.04em] text-brand-gold sm:text-[96px] lg:text-[148px]"
+          className="whitespace-nowrap text-[48px] font-black leading-none tracking-[-0.04em] text-brand-gold sm:text-[96px] lg:text-[148px]"
         >
           SAFE · SIMPLE · SPEED · 2 SPECIALISTS · 3S PRECISION
         </div>
@@ -102,7 +121,7 @@ export function GsapKineticBanner() {
 
       <div
         ref={copyRef}
-        className="container-page relative z-10 -mt-20 text-center sm:-mt-32 lg:-mt-44"
+        className="container-page relative z-10 mt-6 text-center sm:-mt-24 lg:-mt-44"
       >
         <p className="text-[12px] font-bold tracking-[0.22em] text-brand-gold">
           IT&apos;S CLINICAL PRECISION

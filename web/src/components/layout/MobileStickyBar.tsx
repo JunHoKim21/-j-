@@ -13,7 +13,7 @@ export function MobileStickyBar() {
   return (
     <nav
       aria-label="모바일 빠른 메뉴"
-      className="fixed inset-x-0 bottom-0 z-40 border-t border-line-subtle bg-surface-0/95 pb-[env(safe-area-inset-bottom)] shadow-[0_-4px_16px_rgba(15,37,62,0.08)] backdrop-blur-md md:hidden"
+      className="fixed inset-x-0 bottom-0 z-40 border-t border-line-subtle bg-white pb-[env(safe-area-inset-bottom)] shadow-[0_-6px_20px_rgba(15,37,62,0.1)] md:hidden"
     >
       <div className="grid h-[64px] grid-cols-4">
         <a

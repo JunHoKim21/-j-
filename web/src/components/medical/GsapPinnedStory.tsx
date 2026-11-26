@@ -84,38 +84,60 @@ export function GsapPinnedStory() {
         rows.forEach((row) => {
           gsap.fromTo(
             row,
-            { opacity: 0.3, y: 24 },
+            { opacity: 0.45, y: 18 },
             {
               opacity: 1,
               y: 0,
-              duration: 0.6,
+              duration: 0.55,
               ease: "power2.out",
+              clearProps: "transform",
               scrollTrigger: {
                 trigger: row,
-                start: "top 72%",
-                end: "bottom 35%",
-                toggleActions: "play reverse play reverse",
+                start: "top 92%",
+                once: true,
               },
             }
           );
         });
 
         gsap.from(".gsap-3s-card", {
-          y: 36,
+          y: 28,
           opacity: 0,
-          duration: 0.75,
-          stagger: 0.12,
+          duration: 0.65,
+          stagger: 0.1,
           ease: "power3.out",
+          clearProps: "transform",
           scrollTrigger: {
             trigger: ".gsap-3s-grid",
-            start: "top 80%",
+            start: "top 92%",
             once: true,
           },
         });
       });
     }, sectionRef);
 
-    return () => ctx.revert();
+    // 빠른 스크롤 및 전체 페이지 캡처 시 반투명 멈춤/빈 화면 방지 강제 가시화 폴백
+    const fallbackTimer = window.setTimeout(() => {
+      const targets = sectionRef.current?.querySelectorAll<HTMLElement>(
+        ".gsap-metric-row, .gsap-3s-card"
+      );
+      targets?.forEach((el) => {
+        if (parseFloat(window.getComputedStyle(el).opacity) < 0.99) {
+          gsap.to(el, {
+            opacity: 1,
+            y: 0,
+            duration: 0.3,
+            overwrite: "auto",
+            clearProps: "transform",
+          });
+        }
+      });
+    }, 700);
+
+    return () => {
+      window.clearTimeout(fallbackTimer);
+      ctx.revert();
+    };
   }, []);
 
   return (
